@@ -1,0 +1,14 @@
+<div *ngIf="isEmpty">Cart is empty!!</div>
+
+<a *ngIf="isEmpty" [routerLink]="['/home']">Back to home</a>
+
+<div *ngFor="let product of localProducts">
+    <table>
+        <tr>
+            <th>Title</th>
+        </tr>
+        <tr>
+            <td>{{product.title}}</td>
+        </tr>
+    </table>
+</div>

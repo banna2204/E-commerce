@@ -1,0 +1,12 @@
+<mat-toolbar>
+  <span>Home</span>
+  <span class="example-spacer"></span>
+  <div class="gap-btn">
+      <button *ngIf="!isLogged" mat-flat-button color="primary" routerLink="login">Login</button>
+      <button *ngIf="!isLogged" mat-flat-button color="primary" routerLink="registration">Register</button>
+      <button *ngIf="isLogged" mat-flat-button color="primary" routerLink="my-order">My orders</button>
+      <button *ngIf="isLogged" mat-flat-button color="primary" (click)="logout()">Logout</button>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

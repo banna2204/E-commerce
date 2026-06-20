@@ -1,8 +1,18 @@
 <!-- <app-navbar></app-navbar> -->
-<mat-toolbar *ngIf="isLogged">
-  <button mat-flat-button routerLink="home">Home</button>
-   <span class="logged-name">Hii, {{user.name}}</span>
-  <span class="example-spacer"></span>
+<mat-toolbar *ngIf="isLogged" class="navbar">
+  <div>
+    <button mat-flat-button routerLink="home">Home</button>
+     <span class="logged-name">Hii, {{user.name}}</span>
+  </div>
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>What you want</mat-label>
+      <input matInput placeholder="Ex. men's clothing" (input)="OnInput($event)">
+    </mat-form-field>
+  </form>
+
+
   <div class="gap-btn">
       <button *ngIf="!isLogged" mat-flat-button color="primary" routerLink="login">Login</button>
       <button *ngIf="!isLogged" mat-flat-button color="primary" routerLink="registration">Register</button>

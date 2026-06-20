@@ -12,7 +12,7 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
@@ -45,7 +45,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     MatInputModule,
     CommonModule,
     MatTableModule,
-    CdkVirtualScrollableElement
+    CdkVirtualScrollableElement,
+    FormsModule
 ],
   providers: [],
   bootstrap: [AppComponent]

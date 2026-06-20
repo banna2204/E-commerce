@@ -29,8 +29,8 @@ export class MyOrdersComponent {
     if(this.product.quantity>1){
       this.product.quantity -= 1;
       localStorage.setItem('products',JSON.stringify(this.localProducts));
+      this.totalPrice -= this.product.price;
     }
-    this.totalPrice -= this.product.price;
   }
 
   increaseQuantity(id:number){

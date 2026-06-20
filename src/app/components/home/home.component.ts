@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ProductService } from 'src/app/product.service';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor(private httpClient : HttpClient){}
+  constructor(private productService : ProductService){}
+
   products:any
+  serchedProducts:any
 
   ngOnInit(){
-    this.httpClient.get('https://fakestoreapi.com/products')
-    .subscribe((data)=>{
+    this.productService.getProduct().subscribe((data)=>{
       this.products = data
+      this.serchedProducts = this.products;
+    })
+
+    this.productService.inputData.subscribe((data)=>{
+      this.serchedProducts  = this.products?.filter((product:any)=>product.category?.includes(data))
     })
   }
 

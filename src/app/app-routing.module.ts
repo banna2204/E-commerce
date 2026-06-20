@@ -4,6 +4,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { authGuard } from './auth.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -16,10 +18,13 @@ const routes: Routes = [
     path:'registration',component:RegistrationComponent
   },
   {
-    path:'home',component:HomeComponent
+    path:'home',component:HomeComponent,canActivate:[authGuard]
   },
   {
-    path:'my-order',component:MyOrdersComponent
+    path:'my-order',component:MyOrdersComponent,canActivate:[authGuard]
+  },
+  {
+    path:'**',component:NotFoundComponent
   }
 ];
 

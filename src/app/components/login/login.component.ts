@@ -23,9 +23,9 @@ export class LoginComponent {
     if(!emailExist || !passCorrect){
       return alert('credentials wrong!!')
     }
-    let user = users.filter((user:any)=>user.email == this.loginForm.get('email')?.value)
+    let user = users.find((user:any)=>user.email == this.loginForm.get('email')?.value)
     if(user){
-      user[0].isLoggedIn = true;
+      user.isLoggedIn = true;
     }
     localStorage.setItem('users',JSON.stringify(users))
     this.router.navigate(['/home'])

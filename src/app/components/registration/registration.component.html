@@ -1,32 +1,37 @@
+<div class="form-all">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form">
+        <mat-form-field >
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="name" placeholder="Enter name">
 
-<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form">
-    <mat-form-field >
-        <mat-label>Name</mat-label>
-        <input matInput type="text" formControlName="name" placeholder="Enter name">
-
-        <div *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
+            <div *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
            <mat-error *ngIf="registrationForm.get('name')?.errors?.['required']">Name is required</mat-error> 
         </div>
     </mat-form-field>
-
+    
     <mat-form-field >
         <mat-label>Email</mat-label>
         <input matInput type="email" formControlName="email" placeholder="Enter email">
-
+        
         <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
            <mat-error *ngIf="registrationForm.get('email')?.errors?.['required']">email is required</mat-error> 
-          <mat-error *ngIf="registrationForm.get('email')?.errors?.['email']">email is invalid</mat-error> 
+           <mat-error *ngIf="registrationForm.get('email')?.errors?.['email']">email is invalid</mat-error> 
         </div>
     </mat-form-field>
-
+    
     <mat-form-field >
         <mat-label>password</mat-label>
         <input matInput type="text" formControlName="password" placeholder="Enter email">
-
+        
         <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.invalid">
-           <mat-error *ngIf="registrationForm.get('password')?.errors?.['required']">Password is required</mat-error> 
+            <mat-error *ngIf="registrationForm.get('password')?.errors?.['required']">Password is required</mat-error> 
+            <mat-error *ngIf="registrationForm.get('password')?.errors?.['minlength']">Length must be 6</mat-error> 
         </div>
     </mat-form-field>
-
-    <button type="submit" mat-flat-button color="primary" class="reg-btn">Submit</button>
+    
+    <button type="submit" [disabled]="registrationForm.invalid" mat-flat-button color="primary" class="reg-btn">Submit</button>
 </form>
+
+<div class="new-user">Already registered? <a [routerLink]="['/login']">Login</a></div>
+</div>
+<router-outlet></router-outlet>

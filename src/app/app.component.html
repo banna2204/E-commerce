@@ -1,3 +1,14 @@
-<div >
-    <app-navbar></app-navbar>
-</div>
+<!-- <app-navbar></app-navbar> -->
+<mat-toolbar *ngIf="isLogged">
+  <button mat-flat-button routerLink="home">Home</button>
+   <span class="logged-name">Hii, {{user.name}}</span>
+  <span class="example-spacer"></span>
+  <div class="gap-btn">
+      <button *ngIf="!isLogged" mat-flat-button color="primary" routerLink="login">Login</button>
+      <button *ngIf="!isLogged" mat-flat-button color="primary" routerLink="registration">Register</button>
+      <button *ngIf="isLogged" mat-flat-button color="primary" routerLink="my-order">My orders</button>
+      <button *ngIf="isLogged" mat-flat-button color="primary" (click)="logout()">Logout</button>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

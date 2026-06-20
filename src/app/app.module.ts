@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -18,15 +17,19 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import {MatTableModule} from '@angular/material/table';
+import { CdkVirtualScrollableElement } from "@angular/cdk/scrolling";
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     HomeComponent,
     LoginComponent,
     RegistrationComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +43,10 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    CommonModule
-  ],
+    CommonModule,
+    MatTableModule,
+    CdkVirtualScrollableElement
+],
   providers: [],
   bootstrap: [AppComponent]
 })

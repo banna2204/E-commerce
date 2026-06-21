@@ -1,0 +1,14 @@
+<div class="flex-item">
+        <div class="category">{{(product?.category).toUpperCase()}}</div>
+        <mat-card class="example-card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title class="font-title">{{product?.title}} </mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src={{product?.image}} width="250">
+          <mat-card-content class="price-margin">
+            <div>{{product?.description}}</div>
+            <div class="bottom-section"><span>Price - {{product?.price}}</span> <span>Rating - {{product?.rating?.rate}} <span class="star">★</span></span></div>
+          </mat-card-content>
+        </mat-card>
+</div>
+

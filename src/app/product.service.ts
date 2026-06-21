@@ -13,6 +13,10 @@ export class ProductService {
     return this.httpClient.get('https://fakestoreapi.com/products')
    }
 
+   getProductById(id:any){
+    return this.httpClient.get(`https://fakestoreapi.com/products/${id}`) 
+   }
+
    private inputDataSource = new BehaviorSubject<string>('');
 
    inputData = this.inputDataSource.asObservable();

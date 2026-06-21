@@ -4,9 +4,9 @@
           <mat-card-header>
             <mat-card-title class="font-title">{{product.title}} </mat-card-title>
           </mat-card-header>
-          <img mat-card-image src={{product.image}} height="200">
+          <img mat-card-image src={{product.image}} height="200" [routerLink]="['/product-detail',product.id]">
           <mat-card-content class="price-margin">
-            <p >price - {{product.price}} </p>
+            <p class="price">price - {{product.price}} </p>
           </mat-card-content>
           <button (click)="addToCart(product.id)" mat-flat-button color="warn">Add to cart</button>
         </mat-card>

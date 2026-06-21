@@ -8,11 +8,6 @@
   grid-template-columns: auto auto auto auto;
   gap: 10px;
 }
-
-/* .example-header-image {
-  background-image: url('https://material.angular.dev/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-} */
 .price-margin{
     margin-bottom: 5px;
 }
@@ -20,4 +15,8 @@
   font-size: small;
   line-height: 1.5;
   height: 80px;
+  font: bold;
+}
+.price{
+    font-weight: 500;
 }

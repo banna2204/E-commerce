@@ -5,7 +5,7 @@
      <span class="logged-name">Hii, {{user.name}}</span>
   </div>
 
-  <form class="example-form">
+  <form *ngIf="!URL" class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>What you want</mat-label>
       <input matInput placeholder="Ex. men's clothing" (input)="OnInput($event)">

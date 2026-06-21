@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { authGuard } from './auth.guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
   },
   {
     path:'my-order',component:MyOrdersComponent,canActivate:[authGuard]
+  },
+  {
+    path:'product-detail/:id',component:ProductDetailComponent,canActivate:[authGuard]
   },
   {
     path:'**',component:NotFoundComponent

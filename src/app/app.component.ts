@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from './product.service';
 
 @Component({
@@ -17,17 +17,20 @@ export class AppComponent {
   user: any;
   users: any;
   products: any;
+  URL:boolean=false;
 
   ngOnInit() {
     this.productService.getProduct().subscribe((data) => {
       this.products = data;
     });
   }
-
+  
   ngDoCheck() {
     this.users = JSON.parse(localStorage.getItem('users') || '[]');
     this.isLogged = this.users.some((user: any) => user.isLoggedIn === true);
     this.user = this.users.find((user: any) => user.isLoggedIn === true);
+
+    this.URL = this.router.url.includes('product-detail');
   }
 
   logout() {

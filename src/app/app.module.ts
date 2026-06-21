@@ -20,6 +20,7 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import {MatTableModule} from '@angular/material/table';
 import { CdkVirtualScrollableElement } from "@angular/cdk/scrolling";
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     LoginComponent,
     RegistrationComponent,
     MyOrdersComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

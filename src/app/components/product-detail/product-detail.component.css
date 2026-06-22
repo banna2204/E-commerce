@@ -6,9 +6,9 @@
   justify-content: center;
   gap: 20px;
   align-items: center;
-} 
+}
 
-.flex-item{
+.flex-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,26 +16,29 @@
   gap: 10px;
   color: white;
 }
-.price-margin{
-    margin-bottom: 5px;
+
+.price-margin {
+  margin-bottom: 5px;
 }
-.font-title{
+
+.font-title {
   font-size: larger;
   line-height: 1.5;
   height: 80px;
 }
 
-.bottom-section{
+.bottom-section {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
   font-weight: 500;
 }
-.star{
+
+.star {
   color: yellow;
 }
 
-.category{
+.category {
   color: purple;
   font-weight: bold;
   font-size: larger;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/product';
 
 @Component({
   selector: 'app-my-orders',
@@ -7,36 +8,42 @@ import { Router } from '@angular/router';
   styleUrls: ['./my-orders.component.css']
 })
 export class MyOrdersComponent {
-  isEmpty:boolean=false;
-  localProducts:any;
-  dataSource:any;
-  totalPrice:number=0;
-  product:any;
-    ngOnInit(){
-    this.localProducts = JSON.parse(localStorage.getItem('products') || '[]');
-    if(this.localProducts.length==0){
-      this.isEmpty=true
-    }
-    this.dataSource = this.localProducts;
-    for(let i=0;i<this.localProducts.length;i++){
-      this.totalPrice += this.localProducts[i].price * this.localProducts[i].quantity;
+  dataSource: Product[] = [];
+  displayedColumns: string[] = ['title', 'quantity', 'price'];
+  totalPrice: number = 0;
+  product?: Product;
+
+  ngOnInit() {
+    this.dataSource = JSON.parse(localStorage.getItem('products') || '[]')
+    if(this.dataSource){
+      for (let i = 0; i < this.dataSource.length; i++) {
+        this.totalPrice += this.dataSource[i].price * this.dataSource[i].quantity;
+      }
     }
   }
-  displayedColumns:string[]=['title','quantity','price']
 
-  decreaseQuantity(id:number){
-    this.product = this.localProducts.find((p:any)=>p.id===id)
-    if(this.product.quantity>1){
+  increaseQuantity(id: number) {
+    this.product = this.dataSource.find((p: Product) => p.id === id)
+    if (this.product) {
+      this.product.quantity += 1;
+      this.totalPrice += this.product.price;
+    }
+  }
+
+  decreaseQuantity(id: number) {
+    this.product = this.dataSource.find((p: Product) => p.id === id)
+    if (this.product && this.product.quantity > 1) {
       this.product.quantity -= 1;
-      localStorage.setItem('products',JSON.stringify(this.localProducts));
       this.totalPrice -= this.product.price;
+    } else {
+      if (this.product) {
+        this.product.quantity = 0;
+        this.dataSource = this.dataSource.filter((product: Product) => product.id !== id)
+        this.totalPrice -= this.product.price;
+        localStorage.setItem('products', JSON.stringify(this.dataSource));
+      }
     }
   }
 
-  increaseQuantity(id:number){
-    this.product = this.localProducts.find((p:any)=>p.id===id)
-    this.product.quantity += 1;
-    localStorage.setItem('products',JSON.stringify(this.localProducts));
-    this.totalPrice += this.product.price;
-  }
+
 }

@@ -1,15 +1,33 @@
-<div class="flex-item">
-    <div *ngFor="let product of serchedProducts">
-        <mat-card class="example-card" appearance="outlined">
-          <mat-card-header>
-            <mat-card-title class="font-title">{{product.title}} </mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src={{product.image}} height="200" [routerLink]="['/product-detail',product.id]">
-          <mat-card-content class="price-margin">
-            <p class="price">price - {{product.price}} </p>
-          </mat-card-content>
-          <button (click)="addToCart(product.id)" mat-flat-button color="warn">Add to cart</button>
-        </mat-card>
-    </div>
-</div>
+<input type="text" placeholder="Enter min value" [(ngModel)]="minPrice">
+<input type="text" placeholder="Enter max value" [(ngModel)]="maxPrice">
 
+<!-- <select #SelectCategory >
+  <option value="all">Select</option>
+  <option value="men's clothing">Mens Clothes</option>
+  <option value="women's clothing">Women Clothes</option>
+  <option value="jewelery">Jewelery</option>
+  <option value="electronics">Electronics</option>
+</select> -->
+
+<select [(ngModel)]="SelectProduct">
+  <option value="">Select</option>
+  <ng-container *ngFor="let category of getCategory()">
+  <option [value]="category">{{category}}</option>
+  </ng-container>
+</select>
+<button (click)="applyFilter()">Apply filter</button>
+
+<div class="flex-item">
+  <div *ngFor="let product of serchedProducts">
+    <mat-card class="example-card" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title class="font-title">{{product?.title}} </mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src={{product?.image}} height="200" [routerLink]="['/product-detail',product.id]">
+      <mat-card-content class="price-margin">
+        <p class="price">price - {{product.price}} </p>
+      </mat-card-content>
+      <button (click)="addToCart(product?.id)" mat-flat-button color="warn">Add to cart</button>
+    </mat-card>
+  </div>
+</div>

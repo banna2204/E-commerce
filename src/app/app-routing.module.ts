@@ -10,25 +10,25 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 
 const routes: Routes = [
   {
-    path:'',redirectTo:'login',pathMatch:'full'
+    path: '', redirectTo: 'login', pathMatch: 'full'
   },
   {
-    path:'login',component:LoginComponent
+    path: 'login', component: LoginComponent
   },
   {
-    path:'registration',component:RegistrationComponent
+    path: 'registration', component: RegistrationComponent
   },
   {
-    path:'home',component:HomeComponent,canActivate:[authGuard]
+    path: 'home', component: HomeComponent, canActivate: [authGuard]
   },
   {
-    path:'my-order',component:MyOrdersComponent,canActivate:[authGuard]
+    path: 'my-order', component: MyOrdersComponent, canActivate: [authGuard]
   },
   {
-    path:'product-detail/:id',component:ProductDetailComponent,canActivate:[authGuard]
+    path: 'product-detail/:id', component: ProductDetailComponent, canActivate: [authGuard]
   },
   {
-    path:'**',component:NotFoundComponent
+    path: '**', component: NotFoundComponent
   }
 ];
 

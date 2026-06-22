@@ -1,15 +1,18 @@
 .example-spacer {
   flex: 1 1 auto;
 }
-.gap-btn{
+
+.gap-btn {
   display: flex;
   gap: 10px;
 }
-.logged-name{
+
+.logged-name {
   margin-left: 6px;
   font-size: medium;
 }
-.navbar{
+
+.navbar {
   display: flex;
   justify-content: space-between;
 }

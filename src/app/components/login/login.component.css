@@ -1,4 +1,4 @@
-.form-all{
+.form-all {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,15 +6,18 @@
   height: 60vh;
 
 }
-.form{
+
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.new-user{
+
+.new-user {
   margin-top: 40px;
 }
-.login-btn{
-    width:fit-content;
+
+.login-btn {
+  width: fit-content;
 }

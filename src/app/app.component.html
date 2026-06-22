@@ -2,7 +2,7 @@
 <mat-toolbar *ngIf="isLogged" class="navbar">
   <div>
     <button mat-flat-button routerLink="home">Home</button>
-     <span class="logged-name">Hii, {{user.name}}</span>
+    <span class="logged-name">Hii, {{user?.name}}</span>
   </div>
 
   <form *ngIf="!URL" class="example-form">
@@ -14,10 +14,10 @@
 
 
   <div class="gap-btn">
-      <button *ngIf="!isLogged" mat-flat-button color="primary" routerLink="login">Login</button>
-      <button *ngIf="!isLogged" mat-flat-button color="primary" routerLink="registration">Register</button>
-      <button *ngIf="isLogged" mat-flat-button color="primary" routerLink="my-order">My orders</button>
-      <button *ngIf="isLogged" mat-flat-button color="primary" (click)="logout()">Logout</button>
+    <button *ngIf="!isLogged" mat-flat-button color="primary" routerLink="login">Login</button>
+    <button *ngIf="!isLogged" mat-flat-button color="primary" routerLink="registration">Register</button>
+    <button *ngIf="isLogged" mat-flat-button color="primary" routerLink="my-order">My orders</button>
+    <button *ngIf="isLogged" mat-flat-button color="primary" (click)="logout()">Logout</button>
   </div>
 </mat-toolbar>
 

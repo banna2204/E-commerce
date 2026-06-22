@@ -18,7 +18,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import {MatTableModule} from '@angular/material/table';
-import { CdkVirtualScrollableElement } from "@angular/cdk/scrolling";
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
@@ -47,7 +46,6 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     MatInputModule,
     CommonModule,
     MatTableModule,
-    CdkVirtualScrollableElement,
     FormsModule
 ],
   providers: [],

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/product';
 import { ProductService } from 'src/app/product.service';
 
 @Component({
@@ -8,16 +9,17 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent {
-  constructor(private router : ActivatedRoute, private productService : ProductService){}
-  id:string|null='';
-  product:any;
+  constructor(private router: ActivatedRoute, private productService: ProductService) { }
+  product?: Product;
 
-  ngOnInit(){
-    this.router.paramMap.subscribe((param)=>{
-      this.id = param.get('id')
-      this.productService.getProductById(this.id).subscribe((product:any)=>{
-        this.product = product;
-      })
+  ngOnInit() {
+    this.router.paramMap.subscribe((param) => {
+      let id = param.get('id');
+      if(id){
+        this.productService.getProductById(id).subscribe((product) => {
+          this.product = product;
+        })
+      }
     })
   }
 }

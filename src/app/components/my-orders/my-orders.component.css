@@ -1,7 +1,8 @@
 table {
   width: 100%;
 }
-.empty{
+
+.empty {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -10,39 +11,44 @@ table {
   align-items: center;
 }
 
-.quantity{
+.quantity {
   display: flex;
   align-items: center;
   /* justify-content: center; */
 }
-.quantity-width{
-  width:30px;
+
+.quantity-width {
+  width: 30px;
   display: flex;
   justify-content: center;
 }
-.price-width{
+
+.price-width {
   width: 250px;
 }
-.btn{
+
+.btn {
   background-color: transparent;
   color: white;
   border: none;
   padding: 3px 5px;
   cursor: pointer;
 }
-.grand-total{
+
+.grand-total {
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
   gap: 195px;
   background-color: #424242;
-  border-top: 1px solid rgb(202, 190, 190,0.2);
+  border-top: 1px solid rgb(202, 190, 190, 0.2);
   padding: 13px 0;
-  width:100%;
+  width: 100%;
   color: white;
   margin-top: -18px;
   font-size: medium;
 }
-.ttl-margin{
+
+.ttl-margin {
   margin-right: 195px;
   min-width: 40px;
 }

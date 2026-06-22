@@ -1,11 +1,12 @@
-.form{
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 60vh;
 }
-.form-all{
+
+.form-all {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +14,7 @@
   height: 60vh;
 
 }
-.reg-btn{
-    width:fit-content;
+
+.reg-btn {
+  width: fit-content;
 }

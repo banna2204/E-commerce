@@ -11,12 +11,12 @@ import { ProductService } from 'src/app/product.service';
 export class ProductDetailComponent {
   constructor(private router: ActivatedRoute, private productService: ProductService) { }
   product?: Product;
-
+  id:string = ''
   ngOnInit() {
     this.router.paramMap.subscribe((param) => {
-      let id = param.get('id');
-      if(id){
-        this.productService.getProductById(id).subscribe((product) => {
+      this.id = param.get('id') ?? ''
+      if(this.id){
+        this.productService.getProductById(this.id).subscribe((product) => {
           this.product = product;
         })
       }

@@ -1,16 +1,8 @@
-<input type="text" placeholder="Enter min value" [(ngModel)]="minPrice">
-<input type="text" placeholder="Enter max value" [(ngModel)]="maxPrice">
-
-<!-- <select #SelectCategory >
-  <option value="all">Select</option>
-  <option value="men's clothing">Mens Clothes</option>
-  <option value="women's clothing">Women Clothes</option>
-  <option value="jewelery">Jewelery</option>
-  <option value="electronics">Electronics</option>
-</select> -->
+<input id="minlength" type="text" placeholder="Enter min value" [(ngModel)]="minPrice">
+<input id="maxlength" type="text" placeholder="Enter max value" [(ngModel)]="maxPrice">
 
 <select [(ngModel)]="SelectProduct">
-  <option value="">Select</option>
+  <option value="all">Select</option>
   <ng-container *ngFor="let category of getCategory()">
   <option [value]="category">{{category}}</option>
   </ng-container>

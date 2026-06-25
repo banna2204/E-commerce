@@ -35,13 +35,6 @@ export class HomeComponent {
     return result;
   }
 
-  // applyFilter(value: string) {
-  //   this.serchedProducts = this.products?.filter((product: Product) => product.price > this.minPrice && product.price < this.maxPrice && product.category === value)
-  //   if (value == 'all') {
-  //     this.serchedProducts = this.products?.filter((product: Product) => product.price > this.minPrice && product.price < this.maxPrice);
-  //   }
-  // }
-
   applyFilter() {
     this.serchedProducts = this.products?.filter((product: Product) => product.price > this.minPrice && product.price < this.maxPrice && product.category === this.SelectProduct)
     if (this.SelectProduct == 'all') {

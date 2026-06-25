@@ -10,6 +10,9 @@ import { Product } from './product';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+
+  title:string='e-commerce'
+
   constructor(
     private router: Router,
     private productService: ProductService,
@@ -33,8 +36,9 @@ export class AppComponent {
     this.user = this.users?.find((user: User) => user?.isLoggedIn === true);
     this.URL = this.router.url.includes('product-detail');
   }
-
+  
   logout() {
+    this.users = JSON.parse(localStorage.getItem('users') || '[]');
     let user = this.users.find((user: User) => user.email == this.user?.email);
     if (user) {
       user.isLoggedIn = false;

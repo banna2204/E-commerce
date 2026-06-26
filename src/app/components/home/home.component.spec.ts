@@ -12,8 +12,8 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let service: ProductService;
-  
-  
+
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, FormsModule],
@@ -22,28 +22,28 @@ describe('HomeComponent', () => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    
+
     service = TestBed.inject(ProductService);
   });
-  
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
   it('should service call', () => {
-    
+
     const mockProduct = [
       { id: 1, title: 'hello', quantity: 20, image: '', price: 20, category: 'mobile', description: 'nice phone', rating: { rate: 5, count: 5 } },
     ]
     .0
-    
+
     spyOn(service, 'getProduct').and.returnValue(of(mockProduct))
-    
+
     component.ngOnInit();
-    
+
     expect(component.products).toEqual(mockProduct)
   })
-  
+
   it('should initial value check', () => {
     service.inputData.subscribe((data) => {
       expect(data).toEqual('');
@@ -60,20 +60,20 @@ describe('HomeComponent', () => {
 
   it('should filter product based on input', () => {
     const mockProduct = [
-      { 
-        id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 } 
+      {
+        id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 }
       },
-      { 
-        id: 2, title: 'mens', quantity: 5, image: '', price: 50, category: "men's clothing", description: 'nice mens cloths', rating: { rate: 5, count: 5 } 
+      {
+        id: 2, title: 'mens', quantity: 5, image: '', price: 50, category: "men's clothing", description: 'nice mens cloths', rating: { rate: 5, count: 5 }
       },
-      { 
-        id: 3, title: 'women', quantity: 5, image: '', price: 80, category: "women's clothing", description: 'nice womens clothing' , rating: { rate: 5, count: 5 } 
+      {
+        id: 3, title: 'women', quantity: 5, image: '', price: 80, category: "women's clothing", description: 'nice womens clothing', rating: { rate: 5, count: 5 }
       },
     ]
 
     const expectedProducts = [
-      { 
-        id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 } 
+      {
+        id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 }
       },
     ]
 
@@ -93,15 +93,15 @@ describe('HomeComponent', () => {
   it('should return unique category', () => {
 
     const mockProduct = [
-      { 
-        id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 } 
+      {
+        id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 }
       },
-      { 
-        id: 2, title: 'mens', quantity: 5, image: '', price: 50, category: 'jewelery', description: 'nice mens cloths', rating: { rate: 5, count: 5 } 
+      {
+        id: 2, title: 'mens', quantity: 5, image: '', price: 50, category: 'jewelery', description: 'nice mens cloths', rating: { rate: 5, count: 5 }
       },
     ]
 
-    spyOn(service,'getProduct').and.returnValue(of(mockProduct));
+    spyOn(service, 'getProduct').and.returnValue(of(mockProduct));
 
     component.ngOnInit();
 
@@ -110,73 +110,73 @@ describe('HomeComponent', () => {
     expect(result).toContain('jewelery')
   })
 
-  
+
   it('should get filter data', () => {
     component.minPrice = 100;
     component.maxPrice = 500;
-    component.SelectProduct = 'all';
-    let expectedProduct;
-    if(component.SelectProduct === 'jewelery'){
-        expectedProduct = [
-        { 
-          id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 } 
-        }
-      ]
-    }else{
-       expectedProduct = [
-        { 
-          id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 } 
-        },
-        { 
-        id: 2, title: 'mens', quantity: 5, image: '', price: 150, category: 'men clothing', description: 'nice mens cloths', rating: { rate: 5, count: 5 } 
-        },
-      ]
-    }
-   
+    component.SelectProduct = 'jewelery';
+    let expectedProduct = [
+      {
+        id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 }
+      }
+    ]
+
     const mockProduct = [
-      { 
-        id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 } 
+      {
+        id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 }
       },
-      { 
-        id: 2, title: 'mens', quantity: 5, image: '', price: 150, category: 'men clothing', description: 'nice mens cloths', rating: { rate: 5, count: 5 } 
+      {
+        id: 2, title: 'mens', quantity: 5, image: '', price: 150, category: 'men clothing', description: 'nice mens cloths', rating: { rate: 5, count: 5 }
       },
-      { 
-        id: 3, title: 'jewelery', quantity: 5, image: '', price: 50, category: 'jewelery', description: 'nice mens cloths', rating: { rate: 5, count: 5 } 
+      {
+        id: 3, title: 'jewelery', quantity: 5, image: '', price: 50, category: 'jewelery', description: 'nice mens cloths', rating: { rate: 5, count: 5 }
       },
     ]
 
-   
-    spyOn(service,'getProduct').and.returnValue(of(mockProduct));
-
+    spyOn(service, 'getProduct').and.returnValue(of(mockProduct));
     component.ngOnInit();
-
-
     component.applyFilter()
 
     expect(component.serchedProducts).toEqual(expectedProduct)
+
+     component.SelectProduct = 'all';
+    let allExpectedProduct = [
+      {
+        id: 1, title: 'jewelery', quantity: 5, image: '', price: 120, category: 'jewelery', description: 'nice jewelery', rating: { rate: 5, count: 5 }
+      },
+      {
+        id: 2, title: 'mens', quantity: 5, image: '', price: 150, category: 'men clothing', description: 'nice mens cloths', rating: { rate: 5, count: 5 }
+      },
+    ]
+    component.ngOnInit();
+    component.applyFilter()
+
+    expect(component.serchedProducts).toEqual(allExpectedProduct)
   })
 
-  // it('should cart add to addToCart', () => {
-  //   const mockProduct = [
-  //     {id:1,title:'women clothing',quantity:1,image:'',price:120,category:"women's clothing",description:'nice phone',rating:{rate:5,count:5}},
-  //     {id:2,title:'jewelery',quantity:1,image:'',price:10,category:'jewelery',description:'nice phone',rating:{rate:5,count:5}},
-  //     {id:3,title:'mens cloths',quantity:0,image:'',price:220,category:"men's clothing",description:'nice phone',rating:{rate:5,count:5}},
-  //   ]
+  it('should cart add to addToCart', () => {
+    const mockProduct = [
+      { id: 1, title: 'women clothing', quantity: 1, image: '', price: 120, category: "women's clothing", description: 'nice phone', rating: { rate: 5, count: 5 } },
+      { id: 2, title: 'jewelery', quantity: 1, image: '', price: 10, category: 'jewelery', description: 'nice phone', rating: { rate: 5, count: 5 } },
+      { id: 3, title: 'mens cloths', quantity: 0, image: '', price: 220, category: "men's clothing", description: 'nice phone', rating: { rate: 5, count: 5 } },
+    ]
 
-  //   const localMockProduct = [
-  //     {id:1,title:'women clothing',quantity:1,image:'',price:120,category:"women's clothing",description:'nice phone',rating:{rate:5,count:5}},
-  //     {id:2,title:'jewelery',quantity:1,image:'',price:10,category:'jewelery',description:'nice phone',rating:{rate:5,count:5}},
-  //   ]
+    const localMockProduct = [
+      { id: 1, title: 'women clothing', quantity: 1, image: '', price: 120, category: "women's clothing", description: 'nice phone', rating: { rate: 5, count: 5 } },
+      { id: 2, title: 'jewelery', quantity: 1, image: '', price: 10, category: 'jewelery', description: 'nice phone', rating: { rate: 5, count: 5 } },
+    ]
 
-  //   spyOn(service,'getProduct').and.returnValue(of(mockProduct))
-  //   component.ngOnInit();
+    spyOn(service, 'getProduct').and.returnValue(of(mockProduct))
+    component.ngOnInit();
 
-  //   spyOn(localStorage,'setItem');
-  //   spyOn(localStorage,'getItem').and.returnValue(JSON.stringify(localMockProduct))
+    spyOn(localStorage, 'setItem');
+    spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify(localMockProduct))
 
-  //   component.addToCart(mockProduct[3]?.id);
+    const alertSpy = spyOn(window, 'alert')
+    component.addToCart(mockProduct[1]?.id);
+    expect(alertSpy).toHaveBeenCalledWith('Product already added!!');
 
-  //   spyOn
-
-  // })
+    component.addToCart(mockProduct[2]?.id);
+    expect(component.products).toEqual(mockProduct)
+  })
 });

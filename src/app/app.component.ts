@@ -46,9 +46,9 @@ export class AppComponent {
     localStorage.setItem('users', JSON.stringify(this.users));
     this.router.navigate(['/']);
   }
-
+  userInput : string = ''
   OnInput(event: Event) {
-    let userInput = (event.target as HTMLInputElement).value.trim();
-    this.productService.onInputDataEmit(userInput);
+    this.userInput = (event.target as HTMLInputElement).value.trim();
+    this.productService.onInputDataEmit(this.userInput);
   }
 }

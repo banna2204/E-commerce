@@ -21,7 +21,7 @@ describe('ProductDetailComponent', () => {
         {
           provide:ActivatedRoute,
           useValue:{
-            params:of({id:101})
+            paramMap: of({ get: () => '123' })
           }
         }
       ]
@@ -37,13 +37,10 @@ describe('ProductDetailComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should get id', () => {
-
-  //   // const mockProductById = { id: 1, title: 'hello', quantity: 20, image: '', price: 20, category: 'mobile', description: 'nice phone', rating: { rate: 5, count: 5 } };
-
-  //   // spyOn(service, 'getProductById').and.returnValue(of(mockProductById))
-  //   // component.ngOnInit();
-
-  //   expect(service.getProductById).toHaveBeenCalledWith(component.id)
-  // })
+  it('should get product by id', () => {
+    const mockProduct ={ id: 1, title: 'hello', quantity: 2, image: '', price: 20, category: 'mobile', description: 'nice phone', rating: { rate: 5, count: 5 } }
+    spyOn(service,'getProductById').and.returnValue(of(mockProduct))
+    component.ngOnInit()
+    expect(component.product).toEqual(mockProduct)
+  })
 });

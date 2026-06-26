@@ -14,7 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldControl, MatFormFieldModule} from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import {MatTableModule} from '@angular/material/table';
@@ -46,8 +46,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     MatInputModule,
     CommonModule,
     MatTableModule,
-    FormsModule
-],
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

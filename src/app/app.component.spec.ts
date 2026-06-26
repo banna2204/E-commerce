@@ -6,6 +6,12 @@ import { of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { User } from './user';
 import { Router } from '@angular/router';
+import { MatToolbar } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatFormField, MatFormFieldControl, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
 
 
 describe('AppComponent', () => {
@@ -14,8 +20,8 @@ describe('AppComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientModule],
-      declarations: [AppComponent],
+      imports: [RouterTestingModule, HttpClientModule,FormsModule,MatInputModule,BrowserAnimationsModule,MatFormFieldModule,CommonModule],
+      declarations: [AppComponent,MatToolbar,MatFormField,MatLabel],
       providers: [ProductService]
     })
 
@@ -75,12 +81,38 @@ describe('AppComponent', () => {
       name: 'shubham', email: 's@gmail.com', password: '123456', isLoggedIn: true
     },
 
-      spyOn(localStorage, 'setItem')
+    spyOn(localStorage, 'setItem')
     spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify(mockUsers))
 
     component.logout();
 
     expect(localStorage.setItem).toHaveBeenCalledWith('users', JSON.stringify(ExpectedUser))
     expect(router.navigate).toHaveBeenCalledWith(['/'])
+  })
+
+  it('should data emit', () => {
+    let event = {
+        target: {
+          value : 'hello'
+        }
+    } as unknown as Event
+    component.OnInput(event)
+    service.inputData.subscribe((data)=>{
+
+      expect(data).toEqual(component.userInput)
+    })
+  }) 
+
+  it('should ngDOCheck execute', () => {
+    const mockdata = [
+      {
+        name: 'shubham', email: 's@gmail.com', password: '123456', isLoggedIn: true
+      },
+    ]
+
+    spyOn(localStorage,'setItem');
+    spyOn(localStorage,'getItem').and.returnValue(JSON.stringify(mockdata));
+    component.ngDoCheck()
+    expect(component.isLogged).toBe(mockdata[0].isLoggedIn)
   })
 });
